@@ -2,11 +2,12 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import User from '../models/userSchema.js';
+import { config } from '../config/config.js';
 
 dotenv.config();
 
 const createToken = (userId) => {
-  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ userId }, config.JWT_SECRET, { expiresIn: '1h' });
 };
 
 export const register = async (req, res) => {

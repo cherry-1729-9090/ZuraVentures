@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './config/dbConfig.js';
 import cookieParser from 'cookie-parser';
 import router from './routes/index.js';
+import { config } from './config/config.js';
 
 dotenv.config();
 
@@ -22,7 +23,7 @@ app.all('*', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = config.PORT;
 
 async function startServer() {
     try {

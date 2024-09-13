@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import { config } from 'dotenv';
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ export const verifyUser = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
     req.decodedUser = decoded; // Attach decoded data to request object
     next();
   } catch (err) {
